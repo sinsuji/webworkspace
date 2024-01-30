@@ -1,6 +1,6 @@
 const fs = require('fs');
 const express = require('express');
-const { threadId } = require('worker_threads');
+const userRouter = require('./user.js'); // 실제 모듈은 아니기 때문에 파일로 인식
 const app = express();
 
 // 미들웨어 
@@ -51,6 +51,9 @@ const getData = (target, where) => {
     }
     return data;
 }
+
+// user.js 매핑
+app.use('/user', userRouter);
 
 // listen -> 서버를 실행하는 명령어, 이 파일 안에서 한번밖에 실행이 안됨
 app.listen(3000, () => {
@@ -118,6 +121,7 @@ app.get('/profile', (req, res) => {
 });
 
 // 검색을 포함하는 경우 -> QueryString
+// list[0].id=100&list[0].name=Hong&...
 app.get('/search', (req, res) => {
     let keywords = req.query;
     console.log('검색조건 구성', keywords);
