@@ -20,4 +20,4 @@ CREATE TABLE `t_users` (
     PRIMARY KEY(`user_no`)
 );
 
-DESC t_users;
+DESC t_users; 
