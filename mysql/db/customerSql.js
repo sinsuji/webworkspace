@@ -1,4 +1,4 @@
-// customerSql.js
+// userSql.js
 
 let customerList =
 `SELECT id
